@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>Shubham Yadav · AI & Android Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,6 +22,7 @@
             background: #f0f5fe;
             color: #0b1a2e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -578,23 +579,32 @@
             gap: 0.8rem;
         }
 
-        /* ===== GALLERY - FIXED IMAGE SIZING ===== */
+        /* ===== GALLERY - FIXED FOR MOBILE ===== */
         .gallery-container {
             margin: 0.8rem 0 0.3rem;
             border-radius: 1.2rem;
             overflow: hidden;
             background: #f5faff;
             border: 1px solid #e2edfc;
+            position: relative;
+            width: 100%;
         }
 
         .gallery-slider {
             display: flex;
             overflow-x: auto;
+            overflow-y: hidden;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             gap: 0.8rem;
             padding: 0.8rem;
             scroll-behavior: smooth;
+            /* Prevent flex from shrinking */
+            flex-wrap: nowrap;
+            /* Force horizontal scroll */
+            width: 100%;
+            -webkit-scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
         }
 
         .gallery-slider::-webkit-scrollbar {
@@ -609,9 +619,10 @@
             border-radius: 10px;
         }
 
-        /* FIXED: Gallery items with proper sizing */
+        /* FIXED: Gallery items with proper sizing - NO FLEX SHRINK */
         .gallery-item {
             flex: 0 0 auto;
+            flex-shrink: 0;
             scroll-snap-align: start;
             width: 180px;
             min-height: 320px;
@@ -624,6 +635,8 @@
             justify-content: center;
             position: relative;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            /* Prevent shrinking */
+            min-width: 180px;
         }
 
         .gallery-item img {
@@ -631,6 +644,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            flex-shrink: 0;
         }
 
         .gallery-item .placeholder {
@@ -646,6 +660,7 @@
             min-height: 200px;
             height: 100%;
             background: #f0f6fe;
+            flex-shrink: 0;
         }
 
         .gallery-item .placeholder i {
@@ -672,6 +687,7 @@
             justify-content: center;
             gap: 0.4rem;
             padding: 0.4rem 0 0.1rem;
+            flex-wrap: wrap;
         }
 
         .gallery-dots .dot {
@@ -682,6 +698,7 @@
             transition: 0.2s;
             cursor: pointer;
             border: none;
+            flex-shrink: 0;
         }
 
         .gallery-dots .dot.active {
@@ -896,6 +913,7 @@
             display: flex;
             gap: 0.8rem;
             margin-top: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -988,6 +1006,7 @@
         .footer-social {
             display: flex;
             gap: 0.6rem;
+            flex-wrap: wrap;
         }
 
         .footer-social a {
@@ -1184,9 +1203,10 @@
                 width: 170px;
                 height: 170px;
             }
-            /* Gallery responsive */
+            /* Gallery responsive - MOBILE FIX */
             .gallery-item {
                 width: 140px;
+                min-width: 140px;
                 min-height: 250px;
                 max-height: 320px;
             }
@@ -1224,8 +1244,10 @@
                 height: 140px;
                 border-width: 3px;
             }
+            /* Gallery responsive - MOBILE FIX */
             .gallery-item {
                 width: 120px;
+                min-width: 120px;
                 min-height: 200px;
                 max-height: 280px;
             }
@@ -1234,6 +1256,10 @@
             }
             .gallery-item .placeholder span {
                 font-size: 0.7rem;
+            }
+            .gallery-slider {
+                gap: 0.5rem;
+                padding: 0.5rem;
             }
         }
     </style>
@@ -1463,7 +1489,7 @@
                     <span style="font-size:0.7rem; color:#6a8aaa; margin-top:0.2rem;"><i class="fas fa-arrows-alt-h"></i> 5 screenshots · swipe to view</span>
                 </div>
 
-                <!-- ===== DEV CONSOLE PRO - 3 Images ===== -->
+                <!-- ===== DEV CONSOLE PRO - 2 Images ===== -->
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon"><i class="fas fa-terminal"></i></div>
@@ -1482,7 +1508,6 @@
                             <div class="gallery-item">
                                 <img src="devconsole/2.jpg" alt="Dev Console Security">
                             </div>
-                            
                         </div>
                         <div class="gallery-dots" id="dots3"></div>
                     </div>
@@ -1492,8 +1517,7 @@
                     <span style="font-size:0.7rem; color:#6a8aaa; margin-top:0.2rem;"><i class="fas fa-arrows-alt-h"></i> 2 screenshots · swipe to view</span>
                 </div>
 
-              
-                <!-- ===== UNPUBLISHED - 2 Images ===== -->
+                <!-- ===== UNPUBLISHED - 3 Images ===== -->
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon"><i class="fas fa-box-open"></i></div>
@@ -1512,8 +1536,8 @@
                             <div class="gallery-item">
                                 <img src="fai/2.jpg" alt="Utility Tool">
                             </div>
-                              <div class="gallery-item">
-                                <img src="fai/2.jpg" alt="Utility Tool">
+                            <div class="gallery-item">
+                                <img src="fai/3.jpg" alt="Utility Tool">
                             </div>
                         </div>
                         <div class="gallery-dots" id="dots6"></div>
@@ -1773,7 +1797,7 @@
                     <div class="footer-social">
                         <a href="https://github.com/kuttahaitu"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/shubham-yadav-6618ab306/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com/shubhamyadav123"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.youtube.com/@TechCodersphere"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -1861,6 +1885,9 @@
             const items = slider.querySelectorAll('.gallery-item');
             const dotsContainer = document.getElementById(`dots${index + 1}`);
             if (!dotsContainer || items.length === 0) return;
+
+            // Clear existing dots
+            dotsContainer.innerHTML = '';
 
             // Create dots
             items.forEach((_, i) => {
