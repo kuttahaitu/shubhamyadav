@@ -91,6 +91,7 @@
             transition: all 0.25s ease;
             background: var(--surface-light);
             color: var(--text);
+            text-decoration: none;
         }
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -109,6 +110,10 @@
             background: var(--surface-light);
             border-color: var(--text-secondary);
         }
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.8rem;
+        }
         
         /* ===== ANIMATIONS ===== */
         .reveal {
@@ -120,17 +125,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .stagger>* {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .stagger.visible>*:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
-        .stagger.visible>*:nth-child(2) { transition-delay: 0.10s; opacity: 1; transform: translateY(0); }
-        .stagger.visible>*:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-        .stagger.visible>*:nth-child(4) { transition-delay: 0.20s; opacity: 1; transform: translateY(0); }
-        .stagger.visible>*:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
-        .stagger.visible>*:nth-child(6) { transition-delay: 0.30s; opacity: 1; transform: translateY(0); }
         
         /* ===== NAV ===== */
         nav {
@@ -143,7 +137,6 @@
             background: rgba(11, 13, 18, 0.85);
             backdrop-filter: blur(16px) saturate(1.8);
             border-bottom: 1px solid rgba(255,255,255,0.04);
-            transition: background 0.3s ease;
         }
         nav .container {
             display: flex;
@@ -155,7 +148,9 @@
             font-size: 1.2rem;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .nav-links {
@@ -278,6 +273,7 @@
         }
         .hero h1 .highlight {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -375,6 +371,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -445,6 +442,7 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.04);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
         }
         .project-card:hover {
             transform: translateY(-8px);
@@ -529,6 +527,13 @@
             font-size: 0.7rem;
             font-weight: 600;
             z-index: 2;
+        }
+        .click-hint {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
         }
         
         /* ===== SERVICES ===== */
@@ -707,14 +712,14 @@
 <!-- ===== NAV ===== -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container">
-        <span class="nav-logo">SY.</span>
+        <a href="index.html" class="nav-logo">SY.</a>
         <ul class="nav-links" id="navLinks" role="menubar">
-            <li role="none"><a href="#hero" role="menuitem" class="active">Home</a></li>
-            <li role="none"><a href="#about" role="menuitem">About</a></li>
-            <li role="none"><a href="#skills" role="menuitem">Skills</a></li>
-            <li role="none"><a href="#projects" role="menuitem">Projects</a></li>
-            <li role="none"><a href="#services" role="menuitem">Services</a></li>
-            <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+            <li role="none"><a href="index.html#hero" role="menuitem" class="active">Home</a></li>
+            <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+            <li role="none"><a href="index.html#skills" role="menuitem">Skills</a></li>
+            <li role="none"><a href="index.html#projects" role="menuitem">Projects</a></li>
+            <li role="none"><a href="index.html#services" role="menuitem">Services</a></li>
+            <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
         </ul>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -741,7 +746,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="https://github.com/shubhamyadav-cri/shubhamyadav-cri.github.io/blob/main/developer_profile.jpg" alt="Shubham Yadav - Flutter & Android Developer" class="profile-photo" />
+                <img src="developer_profile.jpg" alt="Shubham Yadav - Flutter & Android Developer" class="profile-photo" />
             </div>
         </div>
     </div>
@@ -808,64 +813,58 @@
     <div class="container">
         <span class="section-label">Portfolio</span>
         <h2 id="projects-title" class="section-title">Projects</h2>
-        <p class="section-desc">Explore my complete portfolio of applications and tools</p>
+        <p class="section-desc">Click on any project card to explore detailed information</p>
         <div class="projects-grid">
             <!-- Smile AI - Featured -->
-            <div class="project-card project-featured">
+            <a href="smileai/smile-ai.html" class="project-card project-featured" style="display:block; color:inherit;">
                 <div class="thumb">
-                    <img src="https://via.placeholder.com/600x400/1c2130/4f7dff?text=Smile+AI+Preview" alt="Smile AI app preview" />
+                    <img src="smileai/1.jpg" alt="Smile AI app preview" />
                 </div>
                 <div class="body">
                     <h3>Smile AI</h3>
                     <p>Advanced AI powerhouse: image editing, generation, vision, intelligent chat, live voice stream, and agents mode. Entirely pure Java Android — a complete AI suite.</p>
                     <div class="project-tags"><span>AI</span><span>Vision</span><span>Voice</span><span>Java</span></div>
-                    <div class="project-actions">
-                        <a href="#" class="btn btn-primary">GitHub</a>
-                        <a href="#" class="btn">Live Demo</a>
-                    </div>
+                    <div class="click-hint">👆 Click for full details →</div>
                 </div>
-            </div>
+            </a>
+            
             <!-- NviQo AI -->
-            <div class="project-card">
+            <a href="nviqo-ai.html" class="project-card" style="display:block; color:inherit;">
                 <div class="thumb">
-                    <img src="https://via.placeholder.com/600x400/1c2130/a78bfa?text=NviQo+AI+Preview" alt="NviQo AI app preview" />
+                    <img src="nviqo/1.jpg" alt="NviQo AI app preview" />
                 </div>
                 <div class="body">
                     <h3>NviQo AI</h3>
                     <p>Ultimate AI hub: multi-model chat, web search, AI-powered search, voice assistant, offline/local AI, private server config, custom endpoints &amp; 20+ providers.</p>
                     <div class="project-tags"><span>Flutter</span><span>AI Hub</span><span>Offline</span></div>
-                    <div class="project-actions">
-                        <a href="#" class="btn btn-primary">GitHub</a>
-                        <a href="#" class="btn">Live Demo</a>
-                    </div>
+                    <div class="click-hint">👆 Click for full details →</div>
                 </div>
-            </div>
+            </a>
+            
             <!-- Dev Console Pro -->
-            <div class="project-card">
+            <a href="dev-console.html" class="project-card" style="display:block; color:inherit;">
                 <div class="thumb">
-                    <img src="https://via.placeholder.com/600x400/1c2130/4f7dff?text=Dev+Console+Pro+Preview" alt="Dev Console Pro app preview" />
+                    <img src="devconsole/1.jpg" alt="Dev Console Pro app preview" />
                 </div>
                 <div class="body">
                     <h3>Dev Console Pro</h3>
                     <p>Enterprise-grade URL manager: save, organize, detect harmful/18+ URLs, private/public sections, secure sharing, home-screen shortcuts, comments &amp; ratings.</p>
                     <div class="project-tags"><span>Android</span><span>Security</span><span>Uptodown</span></div>
-                    <div class="project-actions">
-                        <a href="#" class="btn btn-primary">GitHub</a>
-                        <a href="#" class="btn">Download</a>
-                    </div>
+                    <div class="click-hint">👆 Click for full details →</div>
                 </div>
-            </div>
-            <!-- Unpublished & Experiments -->
-            <div class="project-card">
+            </a>
+
+              <a href="nviqo-ai.html" class="project-card" style="display:block; color:inherit;">
                 <div class="thumb">
-                    <div class="placeholder">🧪</div>
+                    <img src="fai/1.jpg" alt="FAi AI app preview" />
                 </div>
                 <div class="body">
-                    <h3>Unpublished & Experiments</h3>
-                    <p>Numerous unpublished apps and experimental tools — from AI prototypes to productivity hacks. Always building, always innovating.</p>
-                    <div class="project-tags"><span>AI</span><span>Prototype</span><span>R&D</span></div>
+                    <h3>FAi AI</h3>
+                    <p>Advanced AI powerhouse: image editing, generation, vision, intelligent chat, live voice stream, and agents mode. Entirely pure Flutter— a complete AI suite.</p>
+                    <div class="project-tags"><span>AI</span><span>Vision</span><span>Voice</span><span>Java</span></div>
+                    <div class="click-hint">👆 Click for full details →</div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -967,6 +966,9 @@
         });
         navLinks.forEach(link => {
             link.classList.remove('active');
+            if (link.getAttribute('href') === '#hero' && current === '') {
+                link.classList.add('active');
+            }
             if (link.getAttribute('href') === '#' + current) {
                 link.classList.add('active');
             }
@@ -993,7 +995,7 @@
     });
 
     // ===== SCROLL REVEAL =====
-    const revealElements = document.querySelectorAll('.reveal, .stagger, .project-card, .skill-card, .service-item, .stat-card, .contact-item, .achievement-card');
+    const revealElements = document.querySelectorAll('.project-card, .skill-card, .service-item, .stat-card, .contact-item, .achievement-card');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1007,36 +1009,6 @@
         el.classList.add('reveal');
         revealObserver.observe(el);
     });
-
-    // ===== BUTTON RIPPLE =====
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const ripple = document.createElement('span');
-            ripple.style.cssText = `
-                position: absolute; top: ${y}px; left: ${x}px;
-                width: 8px; height: 8px; border-radius: 50%;
-                background: rgba(255,255,255,0.3);
-                transform: scale(0);
-                animation: rippleAnim 0.6s ease-out forwards;
-                pointer-events: none;
-            `;
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 700);
-        });
-    });
-
-    const styleSheet = document.createElement("style");
-    styleSheet.textContent = `
-        @keyframes rippleAnim {
-            to { transform: scale(6); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(styleSheet);
 
     console.log('✨ Portfolio by Shubham Yadav — Flutter & Android Developer');
 </script>
